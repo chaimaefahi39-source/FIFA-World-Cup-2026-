@@ -1,7 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const matchController = require('../Controllers/match.controller');
+const { validateMatch } = require('../middlewares/validate.middleware');
 
+router.post('/', validateMatch, matchController.createMatch);
 router.post('/', matchController.createMatch);
 router.get('/', matchController.getAllMatches);
 router.get('/:id', matchController.getMatchById);
