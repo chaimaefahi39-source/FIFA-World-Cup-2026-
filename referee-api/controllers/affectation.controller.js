@@ -10,7 +10,6 @@ exports.createAffectation = async (req, res, next) => {
     if (!arbitre || !match) {
       return res.status(404).json({ message: 'Referee or Match not found' });
     }
-
     const affectation = await Affectation.create({
       ArbitreId: arbitreId,
       MatchId: matchId,

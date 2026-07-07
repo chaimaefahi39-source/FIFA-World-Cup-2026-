@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const affectationController = require('../controlllers/affectation.controller');
+const affectationController = require('../controllers/affectation.controller');
 
 router.post('/', affectationController.createAffectation);
-
 module.exports = router;

@@ -5,11 +5,10 @@ const { sequelize } = require('./models/index');
 
 const loggerMiddleware = require('./middlewares/logger.middleware');
 const errorMiddleware = require('./middlewares/error.middleware');
-
-
 const arbitreRoutes = require('./routes/arbitre.routes');
 const matchRoutes = require('./routes/match.routes');
 const affectationRoutes = require('./routes/affectation.routes');
+
 const app = express();
 const PORT = process.env.PORT || 3000;
 
@@ -22,6 +21,7 @@ app.use('/api/affectations', affectationRoutes);
 app.get('/', (req, res) => {
   res.json({ message: 'Welcome to the FIFA World Cup 2026 Referee Management API!' });
 });
+
 app.use(errorMiddleware);
 
 sequelize.sync({ alter: true })

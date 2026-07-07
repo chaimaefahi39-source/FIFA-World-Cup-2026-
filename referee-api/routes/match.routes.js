@@ -8,5 +8,4 @@ router.get('/:id', matchController.getMatchById);
 router.put('/:id', matchController.updateMatch);
 router.delete('/:id', matchController.deletMatch);
 router.get('/:id/arbitres', matchController.getMatchReferees);
-
 module.exports = router;
