@@ -44,3 +44,48 @@ exports.validateAffectation = (req, res, next) => {
 
   next();
 };
+
+exports.validateRegister = (req, res, next) => {
+  const { nom, email, password, role } = req.body;
+
+  if (!nom || !email || !password) {
+    return res.status(400).json({ message: 'Nom, email et mot de passe sont requis.' });
+  }
+
+  // Validation du format email
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email)) {
+    return res.status(400).json({ message: 'Format d\'email invalide.' });
+  }
+
+  // Validation du mot de passe (minimum 6 caractères)
+  if (password.length < 6) {
+    return res.status(400).json({ message: 'Le mot de passe doit contenir au moins 6 caractères.' });
+  }
+
+  // Validation du rôle si fourni
+  if (role) {
+    const allowedRoles = ['admin', 'commissaire', 'arbitre', 'consultation'];
+    if (!allowedRoles.includes(role)) {
+      return res.status(400).json({ message: 'Rôle invalide. Rôles autorisés : admin, commissaire, arbitre, consultation.' });
+    }
+  }
+
+  next();
+};
+
+exports.validateLogin = (req, res, next) => {
+  const { email, password } = req.body;
+
+  if (!email || !password) {
+    return res.status(400).json({ message: 'Email et mot de passe sont requis.' });
+  }
+
+  // Validation du format email
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email)) {
+    return res.status(400).json({ message: 'Format d\'email invalide.' });
+  }
+
+  next();
+};

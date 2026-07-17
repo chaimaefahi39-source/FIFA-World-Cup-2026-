@@ -1,27 +1,23 @@
 {
   "name": "referee-api",
-  "version": "1.0.0",
-  "description": "",
+  "version": "2.0.0",
+  "description": "FIFA World Cup 2026 Referee Management API with JWT Authentication & RBAC",
   "main": "server.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js",
-    "dev": "nodemon server.js"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "commonjs",
   "dependencies": {
     "bcrypt": "^6.0.0",
     "cors": "^2.8.6",
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
-    "jsonwebtoken": "^9.0.3",
-    "morgan": "^1.11.0",
+    "jsonwebtoken": "^9.0.0",
     "pg": "^8.22.0",
     "pg-hstore": "^2.3.4",
     "sequelize": "^6.37.8"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "dev": "nodemon server.js",
+    "seed": "node seeds/admin-seed.js"
   },
   "devDependencies": {
     "nodemon": "^3.1.14"

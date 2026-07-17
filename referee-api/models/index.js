@@ -2,6 +2,7 @@ const sequelize = require('../config/database');
 const Arbitre = require('./arbitre.model');
 const Match = require('./match.model');
 const Affectation = require('./affectation.model');
+const User = require('./user.model');
 
 Arbitre.belongsToMany(Match, { through: Affectation });
 Match.belongsToMany(Arbitre, {through: Affectation });
@@ -15,5 +16,6 @@ module.exports = {
     sequelize,
     Arbitre,
     Match,
-    Affectation
+    Affectation,
+    User
 };

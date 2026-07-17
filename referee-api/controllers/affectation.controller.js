@@ -21,3 +21,16 @@ exports.createAffectation = async (req, res, next) => {
     next(error);
   }
 };
+
+exports.deleteAffectation = async (req, res, next) => {
+  try {
+    const affectation = await Affectation.findByPk(req.params.id);
+    if (!affectation) {
+      return res.status(404).json({ message: 'Affectation not found' });
+    }
+    await affectation.destroy();
+    res.status(200).json({ message: 'Affectation deleted successfully' });
+  } catch (error) {
+    next(error);
+  }
+};
